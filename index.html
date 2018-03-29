@@ -1,25 +1,23 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Memory Game</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <meta charset="utf-8">
+    <title>Matching Game</title>
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body>
-    <header>
-        <h1>Memory Game</h1>
-        <div class="options">
-            <!-- dificulty and reset -->
-            <div class="restart">
-                <i class="fa fa-repeat"></i>
-            </div>
-        </div>
-    </header>
-    <main>
-        <section class="score_container">
+
+    <div class="container">
+        <header>
+            <h1>Matching Game</h1>
+        </header>
+
+        <section class="score-panel">
             <ul class="stars">
                 <li>
                     <i class="fa fa-star"></i>
@@ -28,17 +26,22 @@
                     <i class="fa fa-star"></i>
                 </li>
                 <li>
-                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star"></i>
                 </li>
             </ul>
-        </Section>
-        <section class="cards_container">
-            <ul class="deck">
 
-            </ul>
-        </Section>
-    </main>
-    <footer>© Designed By Mohamed Ismail - 2018</footer>
+            <span class="moves">0</span> Moves
+
+            <div class="restart">
+                <i class="fa fa-repeat fa-rotate-45"></i>
+            </div>
+        </section>
+
+        <ul class="deck">
+        </ul>
+    </div>
+
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
