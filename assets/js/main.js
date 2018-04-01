@@ -17,14 +17,12 @@ let noOfMoves = 0;
 
 const moves = document.querySelector(".moves");
 
-const stars = document.querySelectorAll(".stars i");
+const stars = document.querySelectorAll(".score-panel .stars i");
 
 const restart = document.querySelector(".restart");
 restart.addEventListener("click", initiate);
-// restart.onclick = initiate;
 
 document.addEventListener('DOMContentLoaded', initiate());
-
 
 /*
 * Display the cards on the page
@@ -37,23 +35,15 @@ function initiate() {
 
     playCards = shuffle(playCards);
 
-    const deck = document.querySelector(".deck");
-    deck.innerHTML = "";
+    drawPlayCardsOnDeck(playCards);
 
-    for (var index = 0; index < difficulty * 2; index++) {
-        const figure = document.createElement("i");
-        figure.classList.add("fa");
-        figure.classList.add(playCards[index]);
+    noOfMatchedCards = 0;
+    noOfMoves = 0;
+    moves.innerText = noOfMoves;
+    openList = [];
 
-        const card = document.createElement("li");
-        card.classList.add("card");
-        card.appendChild(figure);
-        card.addEventListener("click", openCard);
-
-        deck.appendChild(card);
-    }
-
-    moves.innerText = 0;
+    stars[1].classList.replace("fa-star-o", "fa-star");
+    stars[2].classList.replace("fa-star-o", "fa-star");
 }
 
 function preparePlayCards(allCards, difficulty) {
@@ -71,6 +61,7 @@ function preparePlayCards(allCards, difficulty) {
     return playCards;
 }
 
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -86,6 +77,34 @@ function shuffle(array) {
     return array;
 }
 
+function drawPlayCardsOnDeck(playCards) {
+    const deck = document.querySelector(".deck");
+    deck.innerHTML = "";
+
+    for (var index = 0; index < difficulty * 2; index++) {
+        const figure = document.createElement("i");
+        figure.classList.add("fa");
+        figure.classList.add(playCards[index]);
+
+        const card = document.createElement("li");
+        card.classList.add("card");
+        card.appendChild(figure);
+        card.addEventListener("click", openCard);
+
+        deck.appendChild(card);
+    }
+}
+
+function reset() {
+    noOfMatchedCards = 0;
+    noOfMoves = 0;
+    moves.innerText = noOfMoves;
+    openList = [];
+
+    stars[1].classList.replace("fa-star-o", "fa-star");
+    stars[2].classList.replace("fa-star-o", "fa-star");
+}
+
 function openCard() {
     if (openList.length < 2) {
         this.classList.add("open", "show");
@@ -93,7 +112,8 @@ function openCard() {
         openList.push(this);
         this.removeEventListener("click", openCard);
 
-        if (openList.length === 2) {
+        if (openList.length == 2) {
+            incrementMoves();
             checkMatch();
         }
     }
@@ -108,8 +128,6 @@ function checkMatch() {
         window.setTimeout(
             cardsNotMatched, 1300);
     }
-
-    incrementMoves();
 }
 
 function cardsMatched() {
@@ -127,22 +145,18 @@ function cardsMatched() {
 function cardsNotMatched() {
     openList[0].classList.remove("open", "show", "no-match");
     openList[0].addEventListener("click", openCard);
+
     openList[1].classList.remove("open", "show", "no-match");
     openList[1].addEventListener("click", openCard);
+
     openList = [];
 }
 
 function incrementMoves() {
-    var moves = document.querySelector(".moves");
     noOfMoves++;
     moves.innerText = noOfMoves;
-    calculateScore();
-}
 
-function checkAllMatched() {
-    if (noOfMatchedCards == difficulty * 2) {
-        alert("done");
-    }
+    calculateScore();
 }
 
 function calculateScore() {
@@ -152,5 +166,12 @@ function calculateScore() {
         } else {
             stars[1].classList.replace("fa-star", "fa-star-o");
         }
+    }
+}
+
+function checkAllMatched() {
+    if (noOfMatchedCards == difficulty * 2) {
+        //TODO handle congrats msg
+        alert("done");
     }
 }

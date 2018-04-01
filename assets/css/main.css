@@ -17,12 +17,14 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/45degreee_fabric_@2X.png');
     /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
     font-family: 'Coda', cursive;
 }
 
-.container {
+header,
+main,
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,6 +39,10 @@ h1 {
 /*
  * Styles for the deck of cards
  */
+.game-board {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .deck {
     width: 660px;
@@ -96,18 +102,132 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
-    padding: 0;
+.score-panel p {
     display: inline-block;
-    margin: 0 5px 0 0;
+    margin: 0;
 }
 
-.score-panel .stars li {
-    list-style: none;
+.score-panel time {
     display: inline-block;
 }
 
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    background : linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    border-radius: 8px;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    padding: 5px
+}
+
+.stars {
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    color: goldenrod;
+}
+
+.stars li {
+    font-size: 1em;
+    list-style: none;
+    display: inline-block;
+}
+
+.hide {
+    display: none;
+}
+
+/* footer */
+
+footer p {
+    width: 660px;
+    font-size: 0.5em;
+    text-align: right;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        margin: 0.25em;
+    }
+
+    .deck {
+        width: calc(100% - 1em);
+        min-height: 100%;
+        padding: 0.125em;
+        margin: 0 0.5em 0 0.5em;
+        box-shadow: 2px 5px 20px 0 rgba(46, 61, 73, 0.5);
+    }
+
+    .deck .card {
+        height: 160px;
+        width: 175px;
+        margin: 5px;
+    }
+
+    footer p {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .deck .card {
+        height: 90px;
+        width: 140px;
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 567px) {
+    .deck .card {
+        height: 90px;
+        width: 100px;
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 462px) {
+    .deck .card {
+        height: 90px;
+        width: 100px;
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 444px) {
+
+    .score-panel {
+        width: calc(100% - 25px);
+        margin-bottom: 0.5em;
+        margin-top: 5px;
+    }
+
+    .score-panel .stars {
+        padding: 8px 0 0;
+    }
+
+    .score-panel .restart i {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .score-panel .restart-title {
+        display: none;
+    }
+
+    .deck .card {
+        height: 70px;
+        width: 80px;
+        margin: 5px;
+    }
+
+
+}
+
+@media screen and (max-width: 320px) {
+    .deck .card {
+        height: 65px;
+        width: 65px;
+        margin: 5px;
+    }
 }
