@@ -42,6 +42,8 @@ h1 {
 .game-board {
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 1;
 }
 
 .deck {
@@ -105,26 +107,29 @@ h1 {
 .score-panel p {
     display: inline-block;
     margin: 0;
+    padding:  5px;
 }
 
 .score-panel time {
     display: inline-block;
+    padding: 5px;
 }
 
 .score-panel .restart {
     float: right;
     cursor: pointer;
-    background : linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     border-radius: 8px;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    padding: 5px
+    padding: 5px;
 }
 
 .stars {
-    padding: 0;
+    padding: 5px;
     display: inline-block;
     margin: 0 5px 0 0;
     color: goldenrod;
+
 }
 
 .stars li {
@@ -132,6 +137,46 @@ h1 {
     list-style: none;
     display: inline-block;
 }
+
+/*
+ * Styles for the Congrats Panel
+ */
+.congrats-panel {
+    background: rgba(0, 0, 0, 0.67);
+    z-index: 99;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    border-radius: 10px;
+    color: snow;
+    font-size: 1em;
+}
+.congrats-panel h1 {
+    width: 100%;
+    font-size: 1.5em;
+}
+
+.congrats-panel .stars {
+    width: 100%;
+    font-size: 2em;
+}
+
+.congrats-panel p {
+    width: 100%;
+    margin: 0;
+}
+
+.congrats-panel time {
+    width: 100%;
+}
+
+.congrats-panel .restart {
+    width: 100%;
+    cursor: pointer;
+}
+
+
 
 .hide {
     display: none;
