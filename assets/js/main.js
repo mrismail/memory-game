@@ -171,7 +171,7 @@ function checkMatch() {
     } else {
         openList[0].classList.add("no-match");
         openList[1].classList.add("no-match");
-        window.setTimeout(cardsNotMatched, 1300);
+        window.setTimeout(cardsNotMatched, 750);
     }
 }
 
@@ -218,8 +218,8 @@ function incrementMoves() {
  * @description Calculate score of stars
  */
 function calculateScore() {
-    if (noOfMoves > (difficulty + (difficulty / 2))) {
-        if (noOfMoves < ((difficulty * 2) + (difficulty / 2))) {
+    if (noOfMoves > ((difficulty * 2) + (difficulty / 2))) {
+        if (noOfMoves < ((difficulty * 2) + (difficulty + 2))) {
             stars[2].classList.replace("fa-star", "fa-star-o");
             starsCongrats[2].classList.replace("fa-star", "fa-star-o");
         } else {
